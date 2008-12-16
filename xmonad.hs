@@ -161,8 +161,15 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- Restart xmonad
     , ((modMask              , xK_q     ),
           broadcastMessage ReleaseResources >> restart "xmonad" True)
+
     -- Lock Screen
     , ((modMask .|. shiftMask, xK_l), spawn "gnome-screensaver-command -l")
+
+    -- Volume Up - find your device using 'amixer controls'
+    , ((modMask, xK_Up  ), spawn "amixer -q set PCM PLayback Volume 10+")
+
+    -- Volume Down - find your device using 'amixer controls'
+    , ((modMask, xK_Down  ), spawn "amixer -q set PCM PLayback Volume 10-")
 
     ]
     ++
